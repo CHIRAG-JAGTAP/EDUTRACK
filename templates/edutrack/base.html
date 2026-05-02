@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>{% block title %}EduTrack{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <i class="fas fa-graduation-cap"></i>
+            <span>EduTrack</span>
+        </div>
+        <div class="navbar-links">
+            <a href="/home/" class="nav-link {% block nav_home %}{% endblock %}">Home</a>
+            <a href="/" class="nav-link {% block nav_signup %}{% endblock %}">Signup</a>
+            <a href="/login/" class="nav-link {% block nav_login %}{% endblock %}">Login</a>
+            <a href="/about/" class="nav-link {% block nav_about %}{% endblock %}">About</a>
+            <a href="/contact/" class="nav-link {% block nav_contact %}{% endblock %}">Contact</a>
+        </div>
+        <div class="navbar-right">
+            <label class="nav-theme-label" for="nav-theme-toggle">Dark</label>
+            <input type="checkbox" id="nav-theme-toggle">
+        </div>
+    </nav>
+    {% block body %}{% endblock %}
+    <script>
+        document.getElementById('nav-theme-toggle').addEventListener('change', (e) => {
+            document.documentElement.setAttribute('data-theme', e.target.checked ? 'dark' : 'light');
+        });
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

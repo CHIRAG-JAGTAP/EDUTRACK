@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack - About</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ── NAVBAR ── -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <i class="fas fa-graduation-cap"></i>
+            <span>EduTrack</span>
+        </div>
+        <div class="navbar-links">
+            <a href="/home/" class="nav-link">Home</a>
+            <a href="/" class="nav-link">Signup</a>
+            <a href="/login/" class="nav-link">Login</a>
+            <a href="/about/" class="nav-link active">About</a>
+            <a href="/contact/" class="nav-link">Contact</a>
+        </div>
+        <div class="navbar-right">
+            <label class="nav-theme-label" for="nav-theme-toggle">Dark</label>
+            <input type="checkbox" id="nav-theme-toggle">
+        </div>
+    </nav>
+
+    <div style="padding: 6rem 1rem 3rem; max-width: 900px; margin: 0 auto; position:relative; z-index:1;">
+
+        <!-- Project Description -->
+        <div class="glass-card fade-up" style="margin-bottom: 2.5rem; text-align: center;">
+            <i class="fas fa-graduation-cap"
+                style="font-size:3rem; color: var(--primary-color); margin-bottom:1rem; display:block;"></i>
+            <h2 style="font-size: 2rem; margin-bottom: 0.75rem;">About EduTrack</h2>
+            <p class="subtitle" style="max-width:600px; margin: 0 auto; line-height: 1.8;">
+                EduTrack is an all-in-one academic management platform designed for college students.
+                It helps you track attendance, predict CGPA, manage daily tasks, build study streaks,
+                and grow your soft skills — all wrapped in a beautiful, intuitive dashboard.
+            </p>
+            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <span class="about-tag"><i class="fas fa-check-circle"></i> Open Source</span>
+                <span class="about-tag"><i class="fas fa-mobile-alt"></i> Mobile Friendly</span>
+                <span class="about-tag"><i class="fas fa-moon"></i> Dark Mode</span>
+                <span class="about-tag"><i class="fas fa-shield-alt"></i> Privacy First</span>
+            </div>
+        </div>
+
+        <!-- Team Section -->
+        <h2 style="text-align:center; margin-bottom: 1.5rem; color: var(--text-color); position:relative; z-index:1;"
+            class="fade-up">Meet the Team</h2>
+        <div class="team-grid fade-up">
+
+            <div class="team-card glass-card">
+                <div class="team-avatar">
+                    <img src="{% static 'images/ayush_img.jpeg' %}" alt="Ayush Pandey" class="team-img ayush"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-user-graduate fallback-icon" style="display:none;"></i>
+                </div>
+                <h3>Ayush Pandey</h3>
+                <span class="team-role">Full Stack Developer</span>
+                <div class="team-extra">
+                    <p class="team-desc">Led the complete frontend development of EduTrack, building all UI components,
+                        dashboard features, and user workflows.
+                        Integrated APIs and OCR functionalities, and designed a backend-ready architecture.
+                        Prepared a complete database and Django integration setup for seamless backend implementation.
+                    </p>
+                    <div class="team-socials">
+                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card glass-card">
+                <div class="team-avatar">
+                    <img src="{% static 'images/chirag_img.jpeg' %}" alt="Chirag Jagtap" class="team-img chirag"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-user-graduate fallback-icon" style="display:none;"></i>
+                </div>
+                <h3>Chirag Jagtap</h3>
+                <span class="team-role">Backend Developer</span>
+                <div class="team-extra">
+                    <p class="team-desc">Handled backend development and full project integration using Django in
+                        PyCharm.
+                        Connected frontend modules with database systems, implemented core logic, and ensured smooth
+                        data flow and functionality across the application.</p>
+                    <div class="team-socials">
+                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card glass-card">
+                <div class="team-avatar">
+                    <img src="{% static 'images/chinmay_img.jpeg' %}" alt="Chinmay Bhalerao" class="team-img chinmay"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-user-graduate fallback-icon" style="display:none;"></i>
+                </div>
+                <h3>Chinmay Bhalerao</h3>
+                <span class="team-role">Documentation & Quality Assurance Support</span>
+                <div class="team-extra">
+                    <p class="team-desc">Managed project documentation and contributed to testing, validation, and
+                        overall quality assurance.
+                        Assisted in identifying issues, improving usability, and ensuring a smooth and reliable user
+                        experience.</p>
+                    <div class="team-socials">
+                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('nav-theme-toggle').addEventListener('change', (e) => {
+            document.documentElement.setAttribute('data-theme', e.target.checked ? 'dark' : 'light');
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

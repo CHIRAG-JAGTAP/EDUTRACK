@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack - Home</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="home-body">
+    <div class="page-transition" id="page-transition"></div>
+
+    <!-- ── NAVBAR ── -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <i class="fas fa-graduation-cap"></i>
+            <span>EduTrack</span>
+        </div>
+        <div class="navbar-links">
+            <a href="/home/" class="nav-link active">Home</a>
+            <a href="/" class="nav-link">Signup</a>
+            <a href="/login/" class="nav-link">Login</a>
+            <a href="/about/" class="nav-link">About</a>
+            <a href="/contact/" class="nav-link">Contact</a>
+        </div>
+        <div class="navbar-right">
+            <label class="nav-theme-label" for="nav-theme-toggle">Dark</label>
+            <input type="checkbox" id="nav-theme-toggle">
+        </div>
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section class="hero-section">
+        <div class="hero-content fade-up">
+            <span class="hero-badge"><i class="fas fa-star"></i> Smart Academic Tracker</span>
+            <h1 class="hero-heading premium-heading">
+                <span class="word word1">Track.</span>
+                <span class="word word2">Learn.</span>
+                <span class="hero-accent word word3">Excel.</span>
+            </h1>
+            <p class="hero-sub">EduTrack helps students manage attendance, CGPA, tasks, streaks, and more — all in one beautiful dashboard.</p>
+            <div class="hero-cta">
+                <a href="/" class="btn-primary-hero" id="start-btn">
+                    <i class="fas fa-rocket rocket-icon"></i> Get Started Free
+                </a>
+                <a href="/login/" class="btn-secondary-hero" id="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Log In
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual fade-up-delay">
+            <div class="hero-card-preview glass-card">
+                <div class="preview-row">
+                    <i class="fas fa-fire" style="color:#f39c12;"></i>
+                    <span>7-Day Streak 🔥</span>
+                </div>
+                <div class="preview-row">
+                    <i class="fas fa-chart-line" style="color:#2ecc71;"></i>
+                    <span>CGPA: 8.6 / 10</span>
+                </div>
+                <div class="preview-row">
+                    <i class="fas fa-calendar-check" style="color:#4a90e2;"></i>
+                    <span>Attendance: 91%</span>
+                </div>
+                <div class="preview-row">
+                    <i class="fas fa-list-check" style="color:#9b59b6;"></i>
+                    <span>5 Tasks Completed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FEATURES ── -->
+    <section class="features-section fade-up">
+        <h2 class="section-title">Everything You Need</h2>
+        <div class="features-grid">
+            <div class="feature-card glass-card">
+                <i class="fas fa-calendar-check feature-icon"></i>
+                <h3>Attendance Tracker</h3>
+                <p>Monitor your attendance percentage and get alerts when you're at risk.</p>
+            </div>
+            <div class="feature-card glass-card">
+                <i class="fas fa-chart-line feature-icon"></i>
+                <h3>CGPA Predictor</h3>
+                <p>Input your marks and predict your semester CGPA instantly.</p>
+            </div>
+            <div class="feature-card glass-card">
+                <i class="fas fa-fire feature-icon"></i>
+                <h3>Streaks & Badges</h3>
+                <p>Build daily habits and earn badges for consistent effort.</p>
+            </div>
+            <div class="feature-card glass-card">
+                <i class="fas fa-list-check feature-icon"></i>
+                <h3>Task Planner</h3>
+                <p>Organize your academic tasks with priorities and deadlines.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('nav-theme-toggle').addEventListener('change', (e) => {
+            document.documentElement.setAttribute('data-theme', e.target.checked ? 'dark' : 'light');
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up, .fade-up-delay').forEach(el => observer.observe(el));
+    </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        function handleClick(btn, targetPage) {
+            btn.addEventListener("click", function (e) {
+                e.preventDefault();
+                const rocket = this.querySelector("i");
+                const overlay = document.getElementById("page-transition");
+                if (!rocket) { window.location.href = targetPage; return; }
+                const rect = rocket.getBoundingClientRect();
+                const flyingRocket = rocket.cloneNode(true);
+                flyingRocket.style.position = "fixed";
+                flyingRocket.style.left = rect.left + "px";
+                flyingRocket.style.top = rect.top + "px";
+                document.body.appendChild(flyingRocket);
+                flyingRocket.classList.add("rocket-fly");
+                setTimeout(() => { if (overlay) overlay.classList.add("active"); }, 200);
+                setTimeout(() => { window.location.href = targetPage; }, 800);
+            });
+        }
+        const startBtn = document.getElementById("start-btn");
+        const loginBtn = document.getElementById("login-btn");
+        if (startBtn) handleClick(startBtn, "/");
+        if (loginBtn) handleClick(loginBtn, "/login/");
+    });
+    </script>
+</body>
+</html>

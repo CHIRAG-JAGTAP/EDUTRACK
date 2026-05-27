@@ -240,16 +240,6 @@ The timetable and calendar upload feature uses the [OCR.space](https://ocr.space
 
 The API key is defined in `static/js/dashboard.js`. If you reach the free tier rate limit, obtain a new key from [ocr.space/OCRAPI](https://ocr.space/OCRAPI) and replace it there.
 
----
-
-## Security and Session Handling
-
-- All passwords are hashed using Django's default PBKDF2 + SHA256 algorithm
-- Every feature API verifies an active session before processing any request
-- After logout, the browser's back button redirects to the login page rather than the dashboard, enforced using `window.location.replace()` on the frontend and `Cache-Control: no-store` headers on the dashboard view
-- In production, `DEBUG` should be set to `False`, `ALLOWED_HOSTS` should be restricted to your domain, and a strong `SECRET_KEY` must be configured in `settings.py`
-
----
 
 ## Team
 
